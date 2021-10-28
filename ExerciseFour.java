@@ -1,53 +1,40 @@
-package thirdlab;
-
-import java.util.Arrays;
-import java.util.Scanner;
-public class ExerciseFour 
-{
-		public static void main(String[] args) {
-			
-			Scanner scn= new Scanner(System.in);
-			
-			//ask to user to give input
-			System.out.println("Enter a string to check it is positive string or not: ");
-			String str= scn.nextLine();
-			
-			//check whether the string is a positive string or not
-			if(isAlphabaticOrder(str)) {
-				System.out.println(str+" is a positive string");
-			}
-			else {
-				System.out.println(str+" is not a positive string");
-			}
-			
-
-		}
-		
-		// Method that checks whether the string is in alphabetical order or not
-		public static boolean isAlphabaticOrder(String str) {
-			
-			// length of the string
-			int length= str.length();
-			
-			//Create a char array of length as string
-			char chars[]= new char[length];
-			
-			//assign the string to char array
-			for(int i=0; i<length; i++) {
-				chars[i]= str.charAt(i);
-			}
-			
-			//sort the char array
-			Arrays.sort(chars);
-			
-			//check if the char array is equal to string or not
-			for(int i= 0; i<length; i++) {
-				if(chars[i]!=str.charAt(i))
-					return false;
-			}
-			return true;
-		}
-
+package sixthlab;
+import java.util.HashMap;
+import java.util.Set;
+public class ExerciseFour {
+	       public HashMap<String,String> getStudent(HashMap<String,Integer> stu)
+	       {
+	              HashMap<String,String> medal = new HashMap<>();
+	              Set<String> set = stu.keySet();
+	              for(String s:set)
+	              {
+	                     Integer marks = stu.get(s);
+	                     if(marks>=90)
+	                     {
+	                           medal.put(s,"Gold");
+	                     }
+	                     else if(marks >=80)
+	                     {
+	                           medal.put(s,"Silver");
+	                     }
+	                     else if(marks>=70)
+	                     {
+	                           medal.put(s,"Bronze");
+	                     }
+	              }
+	              return medal;
+	       }
+	       public static void main(String[] ar)
+	       {
+	              HashMap<String,Integer> stu = new HashMap<>();
+	              ExerciseFour p = new ExerciseFour();
+	              stu.put("R123",65);
+	              stu.put("R124",76);
+	              stu.put("R125",89);
+	              stu.put("R126",90);
+	              stu.put("R127",93);
+	              System.out.println(p.getStudent(stu));
+	       }
 	}
 
 

@@ -1,39 +1,26 @@
-package thirdlab;
+package sixthlab;
 
-import java.util.Scanner;
+import java.util.HashMap;
+import java.util.Iterator;
 
 public class ExerciseThree {
+	public static HashMap getSquare(int[] array) {
+		HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
+
+		for (int n : array) {
+			map.put(n, n * n);
+		}
+		return map;
+	}
 
 	public static void main(String[] args) {
+		int array[] = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+		HashMap<Integer, Integer> map = getSquare(array);
 
-		Scanner scn = new Scanner(System.in);
-
-		// user input
-		System.out.println("Enter a word: ");
-		String str = scn.nextLine();
-		System.out.println("Given string is: " + str);
-
-		System.out.println("After removing consonants: " + alterString(str));
-
-		// closing resourse
-		scn.close();
-
-	}
-
-	// declare all consonants as constant
-	private static final String CONSONANTS = "bcdfghjklmnpqrstvwxyz";
-
-	// logic to replace consonants with the next consonant value
-	public static String alterString(String str) {
-
-		char[] chars = str.toLowerCase().toCharArray();
-		for (int i = 0; i < chars.length; i++) {
-			int index = CONSONANTS.indexOf(chars[i]);
-			if (index != -1) {
-				chars[i] = CONSONANTS.charAt((index + 1) % CONSONANTS.length());
-			}
+		Iterator<Integer> it = map.keySet().iterator();
+		while (it.hasNext()) {
+			Integer key = it.next();
+			System.out.println(key + " : " + map.get(key));
 		}
-		return new String(chars);
 	}
-
 }

@@ -1,18 +1,19 @@
-package secondlab;
-
-import java.time.LocalDate;
-import java.time.Period;
-
-public class ExerciseSeven {
-	public static void main(String[] args)
-    {
-        LocalDate pdate = LocalDate.of(2012, 01, 01);
-        LocalDate now = LocalDate.now();
- 
-        Period diff = Period.between(pdate, now);
- 
-     System.out.printf("\nDifference is %d years, %d months and %d days old\n\n", 
-                    diff.getYears(), diff.getMonths(), diff.getDays());
-  }
-}
+package sixthlab;
+	import java.util.*;
+	public class ExerciseSeven {
+	  
+	    // function reverses the elements of the array
+	    static int reverse(Integer a[], int i)
+	    {
+	        Collections.reverse(Arrays.asList(a));
+	        System.out.println(Arrays.asList(a));
+			return i ;
+	    }
+	  
+	    public static void main(String[] args)
+	    {
+	        Integer [] arr = {10, 20, 30, 40, 50};
+	        System.out.println(reverse(arr,10));
+	    }
+	}
 

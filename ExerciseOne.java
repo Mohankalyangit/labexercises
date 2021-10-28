@@ -1,26 +1,43 @@
-/*Write a Java program that reads a line of integers and then displays each integer and the sum of all integers. (Use String Tokenizer class)?
- * 
- */
-package thirdlab;
+package sixthlab;
 
 import java.util.*;
 
 public class ExerciseOne {
-	public static void main(String args[]) {
-		Scanner scr = new Scanner(System.in);
-		System.out.println("\nEnter sequence of integers with space b/w them and press enter : ");
-		String digit = scr.nextLine();
-		StringTokenizer token = new StringTokenizer(digit);
-		int dig = 0, sum = 0;
-		System.out.println("\nEntered digits are : ");
-		while (token.hasMoreTokens()) {
-			String s = token.nextToken();
-			dig = Integer.parseInt(s);
-			System.out.print(dig + " ");
-			sum = sum + dig;
+	// function to sort hashmap by values
+	public static HashMap<String, Integer> getValues(HashMap<String, Integer> hm) {
+		// Create a list from elements of HashMap
+		List<Map.Entry<String, Integer>> list = new LinkedList<Map.Entry<String, Integer>>(hm.entrySet());
+
+		// Sort the list
+		Collections.sort(list, new Comparator<Map.Entry<String, Integer>>() {
+			public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
+				return (o1.getValue()).compareTo(o2.getValue());
+			}
+		});
+
+		// put data from sorted list to hashmap
+		HashMap<String, Integer> temp = new LinkedHashMap<String, Integer>();
+		for (Map.Entry<String, Integer> aa : list) {
+			temp.put(aa.getKey(), aa.getValue());
 		}
-		System.out.println();
-		System.out.println("Sum is : " + sum);
+		return temp;
+	}
+
+	public static void main(String[] args) {
+		HashMap<String, Integer> hm = new HashMap<String, Integer>();
+
+		// enter data into hashmap
+		hm.put("Math", 98);
+		hm.put("Data Structure", 85);
+		hm.put("Database", 91);
+		hm.put("Java", 95);
+		hm.put("Operating System", 79);
+		hm.put("Networking", 80);
+		Map<String, Integer> hm1 = getValues(hm);
+
+		// print the sorted hashmap
+		for (Map.Entry<String, Integer> en : hm1.entrySet()) {
+			System.out.println("Key = " + en.getKey() + ", Value = " + en.getValue());
+		}
 	}
 }
-

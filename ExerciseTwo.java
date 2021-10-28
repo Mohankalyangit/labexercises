@@ -1,37 +1,42 @@
-/*Create a class containing a method to create the mirror image of a String. The method should return the two Strings separated with a pipe(|) symbol .
- *Method Name 	getImage 
-Method Description 	Generate the mirror image of a String and add it to the existing string. 
-Argument 	String 
-Return Type 	String 
-Logic 	Accepts One String 
-Find the mirror image of the String 
-Add the two Strings together separated by a pipe(|) symbol. 
-For Example 
-Input : EARTH 
-Output : EARTH|HTRAE 
-Hint: Use StringBuffer API (Ex: For this problem reverse method in Stringbuffer can be used) 
-Note: Learn the other APIs in StringBuffer 
- 
- */
-package thirdlab;
+package sixthlab;
 
-import java.util.Scanner;
+import java.util.HashMap;
+import java.util.Map;
 
 public class ExerciseTwo {
-	public String getImage(String str) {
-		StringBuffer sbr = new StringBuffer(str);
-		sbr.append('|');//pre defined method in the string buffer
-		StringBuffer sb = new StringBuffer(str);
-		sb.reverse();
-		sbr.append(sb);
-		return sbr.toString();
+	static void characterCount(String inputString) {
+		// Creating a HashMap containing char
+		// as a key and occurrences as a value
+		HashMap<Character, Integer> charCountMap = new HashMap<Character, Integer>();
+
+		// Converting given string to char array
+
+		char[] strArray = inputString.toCharArray();
+
+		// checking each char of strArray
+		for (char c : strArray) {
+			if (charCountMap.containsKey(c)) {
+
+				// If char is present in charCountMap,
+				// incrementing it's count by 1
+				charCountMap.put(c, charCountMap.get(c) + 1);
+			} else {
+
+				// If char is not present in charCountMap,
+				// putting this char to charCountMap with 1 as it's value
+				charCountMap.put(c, 1);
+			}
+		}
+
+		// Printing the charCountMap
+		for (Map.Entry entry : charCountMap.entrySet()) {
+			System.out.println(entry.getKey() + " " + entry.getValue());
+		}
 	}
 
-	public static void main(String[] ar) {
-		ExerciseTwo p = new ExerciseTwo();
-		Scanner s = new Scanner(System.in);
-		System.out.println("Enter a String");
-		String str = s.next();
-		System.out.println(p.getImage(str));
+	// Driver Code
+	public static void main(String[] args) {
+		String str = "Ajit";
+		characterCount(str);
 	}
 }
