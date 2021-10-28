@@ -1,28 +1,45 @@
-/*Create a class with a method which can calculate the sum of first n natural numbers which are divisible by 3 or 5.
- * Method Name 	calculateSum 
-Method Description 	Calculate Sum 
-Argument 	int n 
-Return Type 	int-sum 
-Logic 	Calculate the sum of first n natural numbers which are divisible by 3 or 5. 
- */
-package firstlab;
+package secondlab;
 
-import java.util.Scanner;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 
 public class ExerciseFive {
-	public static void main(String[] args) {
-		Scanner sc = new Scanner(System.in);
-		System.out.println("enter the number");
-		int n = sc.nextInt();
-		int i, sum = 0;
-		for (i = 0; i <= n; i++) {
-			sum = sum + i;//adding the sum with input number
-		}
-		System.out.println("Sum of first " + n + "natural numbers=" + sum);
-		if (sum % 3 == 0 || sum % 5 == 0) {
-			System.out.println("Sum of the number is divisible by 3 or 5");
-		} else {
-			System.out.println("the number is not divisible by 3 or 5");
+		public static void main(String args[])
+		{
+			try
+			{
+				int lines=0,chars=0,words=0;
+				int code=0;
+				FileInputStream fis = new FileInputStream("sample.txt");
+				while(fis.available()!=0)
+				{
+					code = fis.read();
+					if(code!=10)
+					chars++;
+					if(code==32)
+					words++;
+					if(code==13)
+					{
+						lines++;
+						words++;
+					}
+				}
+				System.out.println("No.of characters = "+chars);
+				System.out.println("No.of words = "+(words+1));
+				System.out.println("No.of lines = "+(lines+1));
+				fis.close();
+			}
+			catch(FileNotFoundException e)
+			{
+				System.out.println("Cannot find the specified file...");
+			}
+			catch(IOException i)
+			{
+				System.out.println("Cannot read file...");
+			}
 		}
 	}
-}
+
+
+
