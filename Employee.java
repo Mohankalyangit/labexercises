@@ -1,7 +1,5 @@
 package com.cg.eis.bean;
-
-public class Employee 
-{
+public class Employee {
 	public int id;
 	public String name,designation,insuranceScheme;
 	public double salary;
@@ -18,4 +16,3 @@ public class Employee
 	}
 	
 }
-

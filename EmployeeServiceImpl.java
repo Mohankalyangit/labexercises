@@ -1,4 +1,5 @@
 package com.cg.eis.pl;
+
 import java.util.Scanner;
 
 import com.cg.eis.bean.Employee;
@@ -53,11 +54,11 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 	@Override
 	public void EmpDetails(Employee emp) {
-		System.out.println("Employee id"+emp.id);
-		System.out.println("Employee name"+emp.name);
-		System.out.println("Employee designation"+emp.designation);
-		System.out.println("Employee salary"+emp.salary);
-		System.out.println("Employee insurancescheme"+emp.insuranceScheme);
+		System.out.println("Employee id"+" -  "+emp.id);
+		System.out.println("Employee name"+" - "+emp.name);
+		System.out.println("Employee designation"+"-  "+emp.designation);
+		System.out.println("Employee salary"+" - "+emp.salary);
+		System.out.println("Employee insurancescheme"+" - "+emp.insuranceScheme);
 		
 	}
 
